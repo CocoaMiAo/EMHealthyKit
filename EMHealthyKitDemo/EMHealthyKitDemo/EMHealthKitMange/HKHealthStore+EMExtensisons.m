@@ -1,18 +1,16 @@
 //
-//  HKHealthStore+AAPLExtensions.m
-//  HealthyDemo
+//  HKHealthStore+EMExtensisons.m
+//  EMHealthyKitDemo
 //
-//  Created by Eric MiAo on 2017/6/13.
+//  Created by Eric MiAo on 2017/6/15.
 //  Copyright © 2017年 Eric MiAo. All rights reserved.
 //
 
-#import "HKHealthStore+AAPLExtensions.h"
+#import "HKHealthStore+EMExtensisons.h"
 
-@implementation HKHealthStore (AAPLExtensions)
-- (void)aapl_mostRecentQuantitySampleOfType:(HKSampleType *)quantityType predicate:(NSPredicate *)predicate completion:(void (^)(NSArray *, NSError *))completion {
+@implementation HKHealthStore (EMExtensisons)
+- (void)emhk_mostRecentQuantitySampleOfType:(HKSampleType *)quantityType predicate:(NSPredicate *)predicate completion:(void (^)(NSArray *results, NSError *error))completion {
     NSSortDescriptor *timeSortDescriptor = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierEndDate ascending:NO];
-    
-    // Since we are interested in retrieving the user's latest sample, we sort the samples in descending order, and set the limit to 1. We are not filtering the data, and so the predicate is set to nil.
     HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:quantityType predicate:predicate limit:HKObjectQueryNoLimit sortDescriptors:@[timeSortDescriptor] resultsHandler:^(HKSampleQuery *query, NSArray *results, NSError *error) {
         if (!results) {
             if (completion) {
@@ -20,10 +18,7 @@
             }
             return;
         }
-        
         if (completion) {
-            // If quantity isn't in the database, return nil in the completion block.
-            NSLog(@"results ---- > = %@",results);
             completion(results, error);
         }
     }];

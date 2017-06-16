@@ -1,18 +1,18 @@
 //
-//  HealthyDemoTests.m
-//  HealthyDemoTests
+//  EMHealthyKitDemoTests.m
+//  EMHealthyKitDemoTests
 //
-//  Created by Eric MiAo on 2017/5/15.
+//  Created by Eric MiAo on 2017/6/15.
 //  Copyright © 2017年 Eric MiAo. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface HealthyDemoTests : XCTestCase
+@interface EMHealthyKitDemoTests : XCTestCase
 
 @end
 
-@implementation HealthyDemoTests
+@implementation EMHealthyKitDemoTests
 
 - (void)setUp {
     [super setUp];
