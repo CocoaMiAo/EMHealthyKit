@@ -40,8 +40,8 @@
                     //                    NSString *start = [NSString stringWithFormat:@"%ld  %ld  %ld  %ld",compStart.year,compStart.month,compStart.day,compStart.hour];
                     
                     NSDateComponents *compEnd = [calendar components:NSCalendarUnitHour|NSCalendarUnitDay|NSCalendarUnitMonth|NSCalendarUnitYear fromDate:model.endDate];
-                    NSString *end = [NSString stringWithFormat:@"%ld年%ld月%ld日 %ld点~%ld点",compEnd.year,compEnd.month,compEnd.day,compStart.hour,compEnd.hour];
-                    NSString *step = [NSString stringWithFormat:@"%@走了%ld步",end,model.stepCount];
+                    NSString *end = [NSString stringWithFormat:@"%ld年%ld月%ld日 %ld点~%ld点",(long)compEnd.year,(long)compEnd.month,(long)compEnd.day,(long)compStart.hour,compEnd.hour];
+                    NSString *step = [NSString stringWithFormat:@"%@走了%ld步",end,(long)model.stepCount];
                     
                     [arrM addObject:step];
                 }

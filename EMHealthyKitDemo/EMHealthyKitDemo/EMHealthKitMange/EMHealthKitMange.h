@@ -65,28 +65,28 @@
 - (void)getHeightFromHealthKitWithUnit:(HKUnit *)unit withCompltion:(void(^)(double value, NSError *error))compltion;
 
 /**
- * 获取今日距离
+ * 获取最新体重
  * @param unit 单位(默认单位传入nil)
  * @param compltion 回调
  */
 - (void)getWeightFromHealthKitWithUnit:(HKUnit *)unit withCompltion:(void(^)(double value, NSError *error))compltion;
 
 /**
- * 获取今日距离
+ * 获取今日血氧
  * @param unit 单位(默认单位传入nil)
  * @param compltion 回调
  */
 - (void)getOxygenSaturationFromHealthKitWithUnit:(HKUnit *)unit withCompltion:(void(^)(double value, NSError *error))compltion;
 
 /**
- * 获取今日距离
+ * 获取最新体重指数
  * @param unit 单位(默认单位传入nil)
  * @param compltion 回调
  */
 - (void)getBodyMassIndexFromHealthKitWithUnit:(HKUnit *)unit withCompltion:(void(^)(double value, NSError *error))compltion;
 
 /**
- * 获取今日距离
+ * 获取今日膳食能量
  * @param unit 单位(默认单位传入nil)
  * @param compltion 回调
  */
