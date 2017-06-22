@@ -6,21 +6,21 @@
 //  Copyright © 2017年 Eric MiAo. All rights reserved.
 //
 
-#import "EMHealthKitMange.h"
+#import "EMHealthKitManager.h"
 #import "HKHealthStore+EMExtensisons.h"
 
 #define HKVersion [[[UIDevice currentDevice] systemVersion] doubleValue]
 #define CustomHealthErrorDomain @"com.sdqt.healthError"
-@implementation EMHealthKitManageModel
+@implementation EMHealthKitManagerModel
 
 @end
 
 
-@interface EMHealthKitMange()
+@interface EMHealthKitManager()
 
 @end
 
-@implementation EMHealthKitMange
+@implementation EMHealthKitManager
 #pragma mark - **************** 单例创建
 + (id)shareInstance {
     static id manager ;
@@ -137,7 +137,7 @@
 }
 
 #pragma mark - 当天每小时的时间段
-+ (NSArray <EMHealthKitManageModel *>*)predicateForSamplesHour {
++ (NSArray <EMHealthKitManagerModel *>*)predicateForSamplesHour {
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *now = [NSDate date];
@@ -155,7 +155,7 @@
     NSInteger count = min>0?(hour+1):hour;
     NSMutableArray *arrayM = [NSMutableArray array];
     for (int i = 0; i < count; i ++) {
-        EMHealthKitManageModel *model = [[EMHealthKitManageModel alloc] init];
+        EMHealthKitManagerModel *model = [[EMHealthKitManagerModel alloc] init];
         NSDate *endDate = [calendar dateByAddingUnit:NSCalendarUnitMinute value:59 toDate:startDate options:0];
         NSPredicate *predicate = [HKQuery predicateForSamplesWithStartDate:startDate endDate:endDate options:HKQueryOptionNone];
         model.predicate = predicate;
@@ -185,12 +185,12 @@
 }
 
 #pragma mark - 步数
-- (void)getStepFromHealthKitComplate:(void(^)(NSArray <EMHealthKitManageModel *> *stepArray))handler {
+- (void)getStepFromHealthKitComplate:(void(^)(NSArray <EMHealthKitManagerModel *> *stepArray))handler {
     HKQuantityType *stepType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierStepCount];
-    NSArray *arr = [EMHealthKitMange predicateForSamplesHour];
+    NSArray *arr = [EMHealthKitManager predicateForSamplesHour];
     __block NSMutableArray *arrM = [NSMutableArray array];
     for (int i = 0; i < arr.count; i ++) {
-        EMHealthKitManageModel *model = [arr objectAtIndex:i];
+        EMHealthKitManagerModel *model = [arr objectAtIndex:i];
         NSPredicate *predicate = model.predicate;
         HKStatisticsQuery *query = [[HKStatisticsQuery alloc] initWithQuantityType:stepType quantitySamplePredicate:predicate options:HKStatisticsOptionCumulativeSum completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
             HKQuantity *sum = [result sumQuantity];
@@ -260,7 +260,7 @@
 #pragma mark - 膳食能量
 - (void)getDietaryEnergyConsumedFromHealthKitWithUnit:(HKUnit *)unit withCompltion:(void (^)(double, NSError *))compltion {
         HKSampleType *stepType = [HKSampleType quantityTypeForIdentifier:HKQuantityTypeIdentifierDietaryEnergyConsumed];
-    [self.healthStore emhk_mostRecentQuantitySampleOfType:stepType predicate:[EMHealthKitMange predicateForSamplesToday:NO] completion:^(NSArray *results, NSError *error) {
+    [self.healthStore emhk_mostRecentQuantitySampleOfType:stepType predicate:[EMHealthKitManager predicateForSamplesToday:NO] completion:^(NSArray *results, NSError *error) {
             double sum = 0;
             for (int i = 0; i < results.count; i ++) {
                 HKQuantitySample *sample = [results objectAtIndex:i];
@@ -315,7 +315,7 @@
 
 #pragma mark - **************** 根据时间范围取数据
 - (void)fetchSampleQuantitySumOfSamplesTodayForType:(HKSampleType *)sampleType unit:(HKUnit *)unit isLatest:(BOOL)isLatest completion:(void (^)(double,NSError *))completionHandler {
-    NSPredicate *predicate = [EMHealthKitMange predicateForSamplesToday:isLatest];
+    NSPredicate *predicate = [EMHealthKitManager predicateForSamplesToday:isLatest];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:HKSampleSortIdentifierStartDate ascending:false];
     HKSampleQuery *query = [[HKSampleQuery alloc] initWithSampleType:sampleType predicate:predicate limit:1 sortDescriptors:@[sortDescriptor] resultsHandler:^(HKSampleQuery * _Nonnull query, NSArray<__kindof HKSample *> * _Nullable results, NSError * _Nullable error) {
@@ -329,7 +329,7 @@
 }
 
 - (void)fetchQuantitySumOfSamplesTodayForType:(HKQuantityType *)quantityType unit:(HKUnit *)unit completion:(void (^)(double, NSError *))completionHandler {
-    NSPredicate *predicate = [EMHealthKitMange predicateForSamplesToday:NO];
+    NSPredicate *predicate = [EMHealthKitManager predicateForSamplesToday:NO];
     
     HKStatisticsQuery *query = [[HKStatisticsQuery alloc] initWithQuantityType:quantityType quantitySamplePredicate:predicate options:HKStatisticsOptionCumulativeSum completionHandler:^(HKStatisticsQuery *query, HKStatistics *result, NSError *error) {
         HKQuantity *sum = [result sumQuantity];

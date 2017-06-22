@@ -15,8 +15,8 @@
 		8577F3F31EF21F33005C0717 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8577F3F11EF21F33005C0717 /* LaunchScreen.storyboard */; };
 		8577F3FE1EF21F34005C0717 /* EMHealthyKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8577F3FD1EF21F34005C0717 /* EMHealthyKitDemoTests.m */; };
 		8577F4091EF21F34005C0717 /* EMHealthyKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8577F4081EF21F34005C0717 /* EMHealthyKitDemoUITests.m */; };
-		8577F4211EF22564005C0717 /* EMHealthKitMange.m in Sources */ = {isa = PBXBuildFile; fileRef = 8577F41E1EF22564005C0717 /* EMHealthKitMange.m */; };
-		8577F4221EF22564005C0717 /* HKHealthStore+EMExtensisons.m in Sources */ = {isa = PBXBuildFile; fileRef = 8577F4201EF22564005C0717 /* HKHealthStore+EMExtensisons.m */; };
+		857903751EFB618C00B1622C /* EMHealthKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 857903721EFB618C00B1622C /* EMHealthKitManager.m */; };
+		857903761EFB618C00B1622C /* HKHealthStore+EMExtensisons.m in Sources */ = {isa = PBXBuildFile; fileRef = 857903741EFB618C00B1622C /* HKHealthStore+EMExtensisons.m */; };
 		85FCFB4E1EF229DF003AC912 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85FCFB4D1EF229DF003AC912 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,10 +54,10 @@
 		8577F4041EF21F34005C0717 /* EMHealthyKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EMHealthyKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8577F4081EF21F34005C0717 /* EMHealthyKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EMHealthyKitDemoUITests.m; sourceTree = "<group>"; };
 		8577F40A1EF21F34005C0717 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8577F41D1EF22564005C0717 /* EMHealthKitMange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMHealthKitMange.h; sourceTree = "<group>"; };
-		8577F41E1EF22564005C0717 /* EMHealthKitMange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMHealthKitMange.m; sourceTree = "<group>"; };
-		8577F41F1EF22564005C0717 /* HKHealthStore+EMExtensisons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+EMExtensisons.h"; sourceTree = "<group>"; };
-		8577F4201EF22564005C0717 /* HKHealthStore+EMExtensisons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+EMExtensisons.m"; sourceTree = "<group>"; };
+		857903711EFB618C00B1622C /* EMHealthKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMHealthKitManager.h; sourceTree = "<group>"; };
+		857903721EFB618C00B1622C /* EMHealthKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMHealthKitManager.m; sourceTree = "<group>"; };
+		857903731EFB618C00B1622C /* HKHealthStore+EMExtensisons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HKHealthStore+EMExtensisons.h"; sourceTree = "<group>"; };
+		857903741EFB618C00B1622C /* HKHealthStore+EMExtensisons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HKHealthStore+EMExtensisons.m"; sourceTree = "<group>"; };
 		85FCFB4B1EF229DF003AC912 /* EMHealthyKitDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EMHealthyKitDemo.entitlements; sourceTree = "<group>"; };
 		85FCFB4D1EF229DF003AC912 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				85FCFB4B1EF229DF003AC912 /* EMHealthyKitDemo.entitlements */,
-				8577F41C1EF22564005C0717 /* EMHealthKitMange */,
+				857903701EFB618C00B1622C /* EMHealthKitManager */,
 				8577F3E61EF21F32005C0717 /* AppDelegate.h */,
 				8577F3E71EF21F32005C0717 /* AppDelegate.m */,
 				8577F3E91EF21F33005C0717 /* ViewController.h */,
@@ -153,15 +153,15 @@
 			path = EMHealthyKitDemoUITests;
 			sourceTree = "<group>";
 		};
-		8577F41C1EF22564005C0717 /* EMHealthKitMange */ = {
+		857903701EFB618C00B1622C /* EMHealthKitManager */ = {
 			isa = PBXGroup;
 			children = (
-				8577F41D1EF22564005C0717 /* EMHealthKitMange.h */,
-				8577F41E1EF22564005C0717 /* EMHealthKitMange.m */,
-				8577F41F1EF22564005C0717 /* HKHealthStore+EMExtensisons.h */,
-				8577F4201EF22564005C0717 /* HKHealthStore+EMExtensisons.m */,
+				857903711EFB618C00B1622C /* EMHealthKitManager.h */,
+				857903721EFB618C00B1622C /* EMHealthKitManager.m */,
+				857903731EFB618C00B1622C /* HKHealthStore+EMExtensisons.h */,
+				857903741EFB618C00B1622C /* HKHealthStore+EMExtensisons.m */,
 			);
-			path = EMHealthKitMange;
+			path = EMHealthKitManager;
 			sourceTree = "<group>";
 		};
 		85FCFB4C1EF229DF003AC912 /* Frameworks */ = {
@@ -312,10 +312,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8577F3EB1EF21F33005C0717 /* ViewController.m in Sources */,
-				8577F4211EF22564005C0717 /* EMHealthKitMange.m in Sources */,
 				8577F3E81EF21F32005C0717 /* AppDelegate.m in Sources */,
+				857903751EFB618C00B1622C /* EMHealthKitManager.m in Sources */,
 				8577F3E51EF21F32005C0717 /* main.m in Sources */,
-				8577F4221EF22564005C0717 /* HKHealthStore+EMExtensisons.m in Sources */,
+				857903761EFB618C00B1622C /* HKHealthStore+EMExtensisons.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

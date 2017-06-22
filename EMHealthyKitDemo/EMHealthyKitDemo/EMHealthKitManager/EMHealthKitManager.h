@@ -10,14 +10,14 @@
 #import <HealthKit/HealthKit.h>
 #import <UIKit/UIKit.h>
 
-@interface EMHealthKitManageModel : NSObject /** 获取步长时的数据对象*/
+@interface EMHealthKitManagerModel : NSObject /** 获取步长时的数据对象*/
 @property (nonatomic, strong) NSPredicate *predicate; /** 时间参数*/
 @property (nonatomic, strong) NSDate *startDate; /** 开始时间*/
 @property (nonatomic, strong) NSDate *endDate; /** 结束时间*/
 @property (nonatomic, assign) NSInteger stepCount; /** 步数*/
 
 @end
-@interface EMHealthKitMange : NSObject
+@interface EMHealthKitManager : NSObject
 @property(nonatomic,strong)HKHealthStore *healthStore; /** 调用系统健康方法的对象*/
 
 /**
@@ -48,7 +48,7 @@
  * 获取今日步数(每小时获取)
  * @param handler 回调
  */
-- (void)getStepFromHealthKitComplate:(void(^)(NSArray <EMHealthKitManageModel *> *stepArray))handler;
+- (void)getStepFromHealthKitComplate:(void(^)(NSArray <EMHealthKitManagerModel *> *stepArray))handler;
 
 /**
  * 获取今日活动能量
